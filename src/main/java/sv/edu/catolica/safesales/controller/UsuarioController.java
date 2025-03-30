@@ -26,4 +26,10 @@ public class UsuarioController {
     public UsuarioEntity save(@RequestBody UsuarioEntity usuarios) {
         return iUsuario.save(usuarios);
     }
+
+    /*@PostMapping("/upload-logo")
+    public ResponseEntity<String> uploadLogo(@RequestParam("file") MultipartFile file) {
+        // Guardar archivo en el servidor y devolver la ruta como String
+    }*/
+
 }
