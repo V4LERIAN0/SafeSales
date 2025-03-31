@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class ProductoImpl implements IProducto {
+
     @Autowired
     private ProductoRepository ProductoRepository;
 

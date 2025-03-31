@@ -10,11 +10,16 @@ import sv.edu.catolica.safesales.service.IProducto;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/producto")
 public class ProductoController {
 
     @Autowired
     IProducto iProducto;
+
+
+
+
+
 
     @Transactional(readOnly = true)
     @GetMapping("/producto")

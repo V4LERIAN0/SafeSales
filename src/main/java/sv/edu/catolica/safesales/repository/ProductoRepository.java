@@ -7,4 +7,5 @@ import sv.edu.catolica.safesales.entities.ProductoEntity;
 @Repository
 public interface ProductoRepository extends JpaRepository<ProductoEntity,Long> {
 
+
 }
