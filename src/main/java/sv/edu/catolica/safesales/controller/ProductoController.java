@@ -1,43 +1,49 @@
 package sv.edu.catolica.safesales.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import sv.edu.catolica.safesales.entities.ProductoEntity;
-import sv.edu.catolica.safesales.repository.ProductoRepository;
-import sv.edu.catolica.safesales.service.IProducto;
-
-import java.util.List;
+import sv.edu.catolica.safesales.entities.UsuarioEntity;
+import sv.edu.catolica.safesales.service.ProductoService;
 
 @Controller // Cambio de RestController a Controller porque ya no necesitamos que nos envie puro texto
 @RequestMapping("/productos")
 public class ProductoController {
 
-   @GetMapping("")
-    public String productoHome(){
+    @Autowired
+    private ProductoService ProductoService;
+
+   @GetMapping("/show")
+    public String productoshow(Model model){
+       model.addAttribute("productos", ProductoService.findAll());
         return "productos/show";
     }
 
+    @GetMapping("/list")
+    public String productoList(){
+       return "productos/list";
+    }
+
+    @GetMapping("/create")
+    public String productocreate(){
+       return "productos/create";
+    }
+
+    @PostMapping("/save")
+    public String saveproducto(ProductoEntity producto){
+
+        UsuarioEntity u = new UsuarioEntity(1, "", "", "", "", "", "", "");
+        //Este solo es una instancia de prueba, para poder guardar productos ya que tenemos una relacion y daria error guardar un producto sin la relacion
+        producto.setUsuario(u);
+
+       ProductoService.save(producto);
+       return "redirect:/productos/create";
+    }
+
+    @GetMapping("/edit")
+    public String productoEdit(@RequestParam int id){
+       return "productos/edit";
+    }
 }
 
-
-
-//
-//
-//
-//    @Autowired
-//    IProducto iProducto;
-
-
-//    @Transactional(readOnly = true) Eliminado porque ya no queremos que devuelva solamente texto
-//    @GetMapping("/producto")
-//    public List<ProductoEntity> listarProductos(){
-//        return iProducto.findAll();
-//    }
-//
-//    @PostMapping("/producto")
-//    public ProductoEntity saveProducto(@RequestBody ProductoEntity productos){
-//        return iProducto.save(productos);
-//    }
-//}

@@ -4,7 +4,7 @@ import sv.edu.catolica.safesales.entities.TiendaEntity;
 
 import java.util.List;
 
-public interface ITienda {
+public interface TiendaService {
 
     List<TiendaEntity> findAll();
 

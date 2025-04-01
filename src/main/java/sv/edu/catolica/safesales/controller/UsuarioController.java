@@ -2,20 +2,15 @@ package sv.edu.catolica.safesales.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import sv.edu.catolica.safesales.entities.UsuarioEntity;
-import sv.edu.catolica.safesales.repository.UsuarioRepository;
-import sv.edu.catolica.safesales.service.IUsuario;
-
-import java.util.List;
+import sv.edu.catolica.safesales.service.UsuarioService;
 
 @Controller
 @RequestMapping("/")
 public class UsuarioController {
 
     @Autowired
-    IUsuario iUsuario;
+    UsuarioService iUsuario;
 
 //    @Transactional(readOnly = true)
 //    @GetMapping("/usuario")

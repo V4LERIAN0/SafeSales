@@ -14,4 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
         return "seguridad/login";
     }
 
+    @GetMapping("/register")
+    public String register(){
+        return "seguridad/register";
+    }
+
 }

@@ -7,21 +7,20 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table (name="tiendas")
+@Table(name = "tiendas")
 public class TiendaEntity {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTienda;
 
     private String nombre;
     private String descripcion;
     private String storeAddress;
+    private String logo;
 
-    // Ruta o URL del logo
-    private String logo; // ejemplo: "/uploads/logos/logo123.png" o "https://miapp.com/logos/logo123.png"
-
-    // Relación con usuario
+    // Relación con Usuario
     @ManyToOne
-    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario") // asegúrate que coincida con la PK de UsuarioEntity
+    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private UsuarioEntity usuario;
 }

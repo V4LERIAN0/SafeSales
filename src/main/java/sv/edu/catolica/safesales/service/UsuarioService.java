@@ -4,7 +4,7 @@ import sv.edu.catolica.safesales.entities.UsuarioEntity;
 
 import java.util.List;
 
-public interface IUsuario {
+public interface UsuarioService {
 
     List<UsuarioEntity> findAll();
 
